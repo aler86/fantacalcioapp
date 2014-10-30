@@ -1,0 +1,55 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app metadata-complete="true">
+    <servlet>
+        <servlet-name>Book Resource</servlet-name>
+        <servlet-class>com.github.aler86.biblioteca.Book</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Book Resource</servlet-name>
+        <url-pattern>/book/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Author Resource</servlet-name>
+        <servlet-class>com.github.aler86.biblioteca.Author</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Author Resource</servlet-name>
+        <url-pattern>/author/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Profile Resource</servlet-name>
+        <servlet-class>com.github.aler86.biblioteca.Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile Resource</servlet-name>
+        <url-pattern>/profile/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+
+        <servlet-name>Users Resource</servlet-name>
+        <servlet-class>com.github.aler86.biblioteca.Users</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Users Resource</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Token Resource</servlet-name>
+        <servlet-class>com.github.aler86.biblioteca.TokenResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Token Resource</servlet-name>
+        <url-pattern>/token/*</url-pattern>
+    </servlet-mapping>
+
+    <listner>
+        <listner-class>com.github.aler86.biblioteca.util.DBHandler</listner-class>
+    </listner>
+    <display-name>Archetype Created Web Application</display-name>
+</web-app>
