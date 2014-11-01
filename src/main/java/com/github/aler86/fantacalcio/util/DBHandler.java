@@ -2,8 +2,7 @@ package com.github.aler86.fantacalcio.util;
 
 
 
-import com.github.aler86.fantacalcio.model.Team;
-import com.github.aler86.fantacalcio.model.User;
+import com.github.aler86.fantacalcio.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -33,7 +32,10 @@ public class DBHandler implements ServletContextListener {
                 .setProperty("hibernate.connection.password", Properties.get(Properties.DB_PASSWORD))
                 .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
                 .addAnnotatedClass(Team.class)
-                .addAnnotatedClass(User.class);
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Profile.class)
+                .addAnnotatedClass(Player.class)
+                .addAnnotatedClass(League.class);
 
         if(Properties.get(Properties.TEST_ENV) != null)
             config.setProperty("hibernate.hbm2ddl.auto", "create");

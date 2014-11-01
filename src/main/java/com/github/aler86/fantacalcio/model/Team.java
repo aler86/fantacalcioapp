@@ -21,12 +21,21 @@ public class Team extends JsonObject {
     private String nome;
 
 
-    @Column(nullable = false)
+   /* @Column(nullable = false)
     private User utente;
-
+    */
     @OneToOne //relazione 1 a 1
-     private User user;//relazione 1 a 1
+    @JoinColumn(nullable=false)
+     private User utente;//relazione 1 a 1
 
+    @ManyToMany(mappedBy = "team") //relazione 1 a molti
+    @JoinColumn(nullable = false)
+    private Set<League> League;//relazione 1 a molti
+
+
+    @OneToMany(mappedBy = "team") //relazione 1 a molti
+    @JoinColumn(nullable = false)
+    private Set<Player> Player;//relazione 1 a molti
 
     public String getNome() {
         return nome;
@@ -51,5 +60,21 @@ public class Team extends JsonObject {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<League> getLeague() {
+        return League;
+    }
+
+    public void setLeague(Set<League> league) {
+        League = league;
+    }
+
+    public Set<Player> getPlayer() {
+        return Player;
+    }
+
+    public void setPlayer(Set<Player> player) {
+        Player = player;
     }
 }

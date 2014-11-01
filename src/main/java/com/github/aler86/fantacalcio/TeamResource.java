@@ -18,12 +18,17 @@ public class TeamResource extends Controller {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("Metodo Get");
-        Team team = new Team();
-        team.setNome("Leo");
-        team.setId(8);
+        try {
+            Team newTeam = Team.validate(Team.class, request.getParameter("id"));
+            if(newTeam == null)
+                throw new FieldValidationException();
 
-        PrintWriter writer = response.getWriter();
-        writer.println(team.toJson());
+            PrintWriter writer = response.getWriter();
+            writer.println(newTeam.toJson());
+        } catch (FieldValidationException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     @Override
@@ -52,16 +57,39 @@ public class TeamResource extends Controller {
 
 */
     }
-    @Override
-    public void doPut(HttpServletRequest request, HttpServletResponse response) {
 
-        System.out.println("Metodo Put");}
+    @Override
+    public void doPut(HttpServletRequest request, HttpServletResponse response) throws  IOException{
+
+        System.out.println("Metodo Put");
+        try {
+            String json = this.readBody(request.getReader());
+            Team theTeam = Team.fromJson(Team.class, json);
+            theTeam.update();
+
+            PrintWriter writer = response.getWriter();
+            writer.println(theTeam.toJson());
+        } catch(FieldValidationException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+
+
+
+    }
 
 
 
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("Metodo Delete");
+        try {
+            Team theTeam = Team.validate(Team.class, request.getParameter("id"));
+            theTeam.delete();
+        } catch (FieldValidationException e) {
+            e.printStackTrace();
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 }
 

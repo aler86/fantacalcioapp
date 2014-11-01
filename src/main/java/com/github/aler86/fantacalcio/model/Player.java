@@ -3,12 +3,16 @@ package com.github.aler86.fantacalcio.model;
 import javax.persistence.*;
 
 /**
- * Created by ADMIN on 15/10/2014.
+ * Created by ADMIN on 30/10/2014.
  */
 @Entity
-public class Profile extends JsonObject {
+public class Player extends JsonObject{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(nullable = false)
+    private Integer id;
 
     @Column(nullable = false)
     private String nome;
@@ -16,14 +20,16 @@ public class Profile extends JsonObject {
     @Column(nullable = false)
     private String cognome;
 
-    @Column(nullable = false)
-    private String indirizzo;
-
-
-
     @OneToOne //relazione 1 a 1
-    @JoinColumn(nullable = false)
-    private User utente;//relazione 1 a 1
+    private Team team;//relazione 1 a 1
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -41,20 +47,11 @@ public class Profile extends JsonObject {
         this.cognome = cognome;
     }
 
-    public String getIndirizzo() {
-        return indirizzo;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
-    }
-
-    public User getUtente() {
-        return utente;
-    }
-
-    public void setUtente(User utente) {
-        this.utente = utente;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
-

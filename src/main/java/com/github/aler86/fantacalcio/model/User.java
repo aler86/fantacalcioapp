@@ -1,19 +1,39 @@
 package com.github.aler86.fantacalcio.model;
 
 
+import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Set;
 
 /**
  * Created by ADMIN on 15/10/2014.
  */
+
+@Entity
 public class User extends JsonObject {
-    private String username;
 
-    private String password;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Integer id;
 
-    private Profile profilo;
+    @Column(nullable = false)
+    private String username;
+
+
+    @Column(nullable = false)
+    private String password;
+
+
+
+
+
+    @OneToMany(mappedBy = "user") //relazione 1 a molti
+    private Set<Team> Team;//relazione 1 a molti
+
+    @OneToOne //relazione 1 a 1
+    private Profile profilo;//relazione 1 a 1
+
 
     public User(){};
 
@@ -55,6 +75,14 @@ public class User extends JsonObject {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<Team> getTeam() {
+        return Team;
+    }
+
+    public void setTeam(Set<Team> team) {
+        Team = team;
     }
 }
 
