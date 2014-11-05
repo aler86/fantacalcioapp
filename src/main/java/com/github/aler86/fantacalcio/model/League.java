@@ -6,20 +6,20 @@ import java.util.Set;
 /**
  * Created by ADMIN on 30/10/2014.
  */
-public class League extends  JsonObject{
+@Entity
+public class League extends  JsonObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String nome;
 
 
-    @ManyToMany(mappedBy = "league") //relazione 1 a molti
-    @JoinColumn(nullable = false)
-    private Set<Team> Team;//relazione 1 a molti
+    @ManyToMany(fetch = FetchType.EAGER) //relazione 1 a molti
+    private Set<Team> team;//relazione 1 a molti
 
 
 
@@ -33,19 +33,20 @@ public class League extends  JsonObject{
 
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Set<Team> getTeam() {
-        return Team;
+        return team;
     }
 
     public void setTeam(Set<Team> team) {
-        Team = team;
+        this.team = team;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

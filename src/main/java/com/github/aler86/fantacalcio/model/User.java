@@ -1,6 +1,5 @@
 package com.github.aler86.fantacalcio.model;
 
-
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
@@ -15,7 +14,7 @@ public class User extends JsonObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String username;
@@ -24,14 +23,10 @@ public class User extends JsonObject {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "utente", fetch = FetchType.EAGER) //relazione 1 a molti
+    private transient Set<Team> Team;//relazione 1 a molti
 
-
-
-
-    @OneToMany(mappedBy = "user") //relazione 1 a molti
-    private Set<Team> Team;//relazione 1 a molti
-
-    @OneToOne //relazione 1 a 1
+    @OneToOne(fetch = FetchType.EAGER) //relazione 1 a 1
     private Profile profilo;//relazione 1 a 1
 
 
@@ -69,13 +64,7 @@ public class User extends JsonObject {
         this.profilo = profilo;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Set<Team> getTeam() {
         return Team;
@@ -83,6 +72,14 @@ public class User extends JsonObject {
 
     public void setTeam(Set<Team> team) {
         Team = team;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

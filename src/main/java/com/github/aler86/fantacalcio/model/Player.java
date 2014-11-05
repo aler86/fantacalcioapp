@@ -20,7 +20,7 @@ public class Player extends JsonObject{
     @Column(nullable = false)
     private String cognome;
 
-    @OneToOne //relazione 1 a 1
+    @OneToOne(fetch = FetchType.EAGER) //relazione 1 a 1
     private Team team;//relazione 1 a 1
 
     public Integer getId() {

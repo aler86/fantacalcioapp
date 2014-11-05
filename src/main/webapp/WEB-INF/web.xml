@@ -1,38 +1,34 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app metadata-complete="true">
     <servlet>
-        <servlet-name>Book Resource</servlet-name>
-        <servlet-class>com.github.aler86.biblioteca.Book</servlet-class>
+        <servlet-name>League Resource</servlet-name>
+        <servlet-class>com.github.aler86.fantacalcio.LeagueResource</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Book Resource</servlet-name>
-        <url-pattern>/book/*</url-pattern>
+        <servlet-name>League Resource</servlet-name>
+        <url-pattern>/league/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Author Resource</servlet-name>
-        <servlet-class>com.github.aler86.biblioteca.Author</servlet-class>
+        <servlet-name>Player Resource</servlet-name>
+        <servlet-class>com.github.aler86.fantacalcio.PlayerResource</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Author Resource</servlet-name>
-        <url-pattern>/author/*</url-pattern>
+        <servlet-name>Player Resource</servlet-name>
+        <url-pattern>/player/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>Profile Resource</servlet-name>
-        <servlet-class>com.github.aler86.biblioteca.Profile</servlet-class>
+        <servlet-class>com.github.aler86.fantacalcio.ProfileResource</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Profile Resource</servlet-name>
         <url-pattern>/profile/*</url-pattern>
     </servlet-mapping>
-    <servlet>
 
+    <servlet>
         <servlet-name>Users Resource</servlet-name>
-        <servlet-class>com.github.aler86.biblioteca.Users</servlet-class>
+        <servlet-class>com.github.aler86.fantacalcio.UsersResource</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Users Resource</servlet-name>
@@ -41,15 +37,33 @@
 
     <servlet>
         <servlet-name>Token Resource</servlet-name>
-        <servlet-class>com.github.aler86.biblioteca.TokenResource</servlet-class>
+        <servlet-class>com.github.aler86.fantacalcio.TokenResource</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Token Resource</servlet-name>
         <url-pattern>/token/*</url-pattern>
     </servlet-mapping>
 
-    <listner>
-        <listner-class>com.github.aler86.biblioteca.util.DBHandler</listner-class>
-    </listner>
+    <servlet>
+        <servlet-name>Team Resource</servlet-name>
+        <servlet-class>com.github.aler86.fantacalcio.TeamResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Team Resource</servlet-name>
+        <url-pattern>/team/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Iscrizione Resource</servlet-name>
+        <servlet-class>com.github.aler86.fantacalcio.IscrizioneResource</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Iscrizione Resource</servlet-name>
+        <url-pattern>/iscrizione/*</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>com.github.aler86.fantacalcio.util.DBHandler</listener-class>
+    </listener>
     <display-name>Archetype Created Web Application</display-name>
 </web-app>

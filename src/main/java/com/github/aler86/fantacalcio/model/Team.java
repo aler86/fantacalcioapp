@@ -9,13 +9,12 @@ import java.util.Set;
  */
 
 @Entity
-
 public class Team extends JsonObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String nome;
@@ -24,18 +23,15 @@ public class Team extends JsonObject {
    /* @Column(nullable = false)
     private User utente;
     */
-    @OneToOne //relazione 1 a 1
+    @ManyToOne (fetch = FetchType.EAGER) //relazione 1 a 1
     @JoinColumn(nullable=false)
      private User utente;//relazione 1 a 1
 
-    @ManyToMany(mappedBy = "team") //relazione 1 a molti
-    @JoinColumn(nullable = false)
-    private Set<League> League;//relazione 1 a molti
+   @ManyToMany(mappedBy = "team",fetch = FetchType.EAGER) //relazione 1 a molti
+    private transient Set<League> league;//relazione 1 a molti
 
-
-    @OneToMany(mappedBy = "team") //relazione 1 a molti
-    @JoinColumn(nullable = false)
-    private Set<Player> Player;//relazione 1 a molti
+    @OneToMany(mappedBy = "team",fetch = FetchType.EAGER) //relazione 1 a molti
+    private transient Set<Player> player;//relazione 1 a molti
 
     public String getNome() {
         return nome;
@@ -54,27 +50,29 @@ public class Team extends JsonObject {
         this.utente = utente;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public Set<League> getLeague() {
-        return League;
+   public Set<League> getLeague() {
+        return league;
     }
 
     public void setLeague(Set<League> league) {
-        League = league;
+        this.league = league;
     }
 
     public Set<Player> getPlayer() {
-        return Player;
+        return player;
     }
 
     public void setPlayer(Set<Player> player) {
-        Player = player;
+        this.player = player;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

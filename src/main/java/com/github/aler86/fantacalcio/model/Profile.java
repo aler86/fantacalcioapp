@@ -9,6 +9,8 @@ import javax.persistence.*;
 public class Profile extends JsonObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
+    private Long id;
 
     @Column(nullable = false)
     private String nome;
@@ -19,9 +21,7 @@ public class Profile extends JsonObject {
     @Column(nullable = false)
     private String indirizzo;
 
-
-
-    @OneToOne //relazione 1 a 1
+    @OneToOne (fetch = FetchType.EAGER)//relazione 1 a 1
     @JoinColumn(nullable = false)
     private User utente;//relazione 1 a 1
 
@@ -55,6 +55,14 @@ public class Profile extends JsonObject {
 
     public void setUtente(User utente) {
         this.utente = utente;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

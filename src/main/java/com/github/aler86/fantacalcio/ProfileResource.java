@@ -1,7 +1,7 @@
 package com.github.aler86.fantacalcio;
 
 import com.github.aler86.fantacalcio.exception.FieldValidationException;
-import com.github.aler86.fantacalcio.model.Player;
+
 import com.github.aler86.fantacalcio.model.Profile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 /**
  * Created by ADMIN on 15/10/2014.
  */
+
 public class ProfileResource extends Controller {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
