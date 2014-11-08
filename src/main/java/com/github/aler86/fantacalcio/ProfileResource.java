@@ -29,13 +29,6 @@ public class ProfileResource extends Controller {
         }
 
 
-       /* System.out.println("Metodo Get");
-        Profile profilo = new Profile();
-        profilo.setNome("Alessandro");
-        profilo.setCognome("Riccio");
-        profilo.setIndirizzo("Via col vento");
-        PrintWriter writer = response.getWriter();
-        writer.println(profilo.toJson()); */
     }
 
     @Override

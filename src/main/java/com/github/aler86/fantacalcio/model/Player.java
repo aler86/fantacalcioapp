@@ -12,7 +12,10 @@ public class Player extends JsonObject{
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
+
+    @Column(nullable = false)
+    private Integer costo;
 
     @Column(nullable = false)
     private String nome;
@@ -23,13 +26,7 @@ public class Player extends JsonObject{
     @OneToOne(fetch = FetchType.EAGER) //relazione 1 a 1
     private Team team;//relazione 1 a 1
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -53,5 +50,21 @@ public class Player extends JsonObject{
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCosto() {
+        return costo;
+    }
+
+    public void setCosto(Integer costo) {
+        this.costo = costo;
     }
 }

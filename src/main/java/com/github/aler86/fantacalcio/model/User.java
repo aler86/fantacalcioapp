@@ -30,13 +30,13 @@ public class User extends JsonObject {
     private Profile profilo;//relazione 1 a 1
 
 
-    public User(){};
+   /* public User(){};
 
     public User(HttpServletRequest request) throws Exception {
     this.setUsername(this.validate(String.class,request.getParameter("Aler86")));
     this.setPassword(this.validate(String.class,request.getParameter("sirio")));
     }
-
+   */
 
     public String getUsername() {
         return username;
