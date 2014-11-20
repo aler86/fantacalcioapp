@@ -21,12 +21,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Set;
 
-/**
- * biblio
- * Created by Pasquale Boemio <boemianrapsodi@gmail.com>
- * <p/>
- * 13 October 2014.
- */
+
 public abstract class Model {
 
     public static <Type> Type validate(Class<Type> typeOfField, String value) throws FieldValidationException {

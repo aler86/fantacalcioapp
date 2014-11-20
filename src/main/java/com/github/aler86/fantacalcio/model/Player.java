@@ -18,6 +18,9 @@ public class Player extends JsonObject{
     private Integer costo;
 
     @Column(nullable = false)
+    private String ruolo;
+
+    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
@@ -66,5 +69,13 @@ public class Player extends JsonObject{
 
     public void setCosto(Integer costo) {
         this.costo = costo;
+    }
+
+    public String getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
     }
 }
